@@ -1,7 +1,7 @@
 *-----------------------------------------------------------
 * Title	  : ECE 441 Project
 * Written by : Smitesh Lokare
-* Description: ECE 441 MONITOR PROJECT SPRING 2015
+* Description: ECE 441 MONITOR PROJECT Fall 2016
 *-----------------------------------------------------------
 
 
@@ -221,7 +221,6 @@ MAIN
 	BSR	 NEW_LINE
 	BRA	 MAIN
 
-**************************************************************
 **************************************************************
 *;Exception Handlers
 
@@ -592,7 +591,6 @@ QMD
 	RTS
 
 *************************************************************************
-*************************************************************************
 ST
 	CLR.L   D2
 	CLR.L   D5
@@ -812,17 +810,6 @@ BM							  ;FORMAT: BM <$address1> <$address2> <$address3>
 	BSR	 ASCII_TO_HEX		;CONVERT ADDR1 TO HEX, OUTPUT IN D5
 	MOVEA.L D5,A2			   ;SAVE ADDR1
 
-*	MOVE.B  (A6)+,D2			;ARG2
-*	CMP.B   #'$',D2			 ;CHECK IF ADDR2 STARTS WITH $
-*	BNE	 ARG_ERR_MSG		 ;IF NOT, ERROR
-*	CMP.B   #SP,D2			  ;CHECK IF END OF ARG1
-*	MOVEA.L A6,A0			   ;INPUT TO ASCII_TO_HEX
-*	BSR	 ASCII_TO_HEX		;OUTPUT RECEIVED IN D5
-*	MOVEA.L D5,A3
-
-*	MOVE.B  (A6)+,D1;
-*	MOVEA.L D1,A0;
-
 	MOVEA.L A6,A0			   ;
 	BSR	 PARSE_ADDR1		 ;ARG1
 	CMP.L   #0,D3			   ;CHECK ERROR FLAG
@@ -830,13 +817,6 @@ BM							  ;FORMAT: BM <$address1> <$address2> <$address3>
 	BSR	 ASCII_TO_HEX		;CONVERT ADDR1 TO HEX, OUTPUT IN D5
 	MOVEA.L D5,A3			   ;SAVE ADDR1
 
-
-*	MOVE.B  (A0)+,D2			;ARG3
-*	CMP.B   #'$',D2			 ;CHECK IF ADDR3 STARTS WITH $
-*	BEQ	 ARG_ERR_MSG		 ;IF NOT, ERROR
-*	ADDA.L  #1,A0
-*	BSR	 ASCII_TO_HEX		;OUTPUT RECEIVED IN D5
-*	MOVEA.L D5,A4
 
 	MOVE.B  (A6)+,D2			;ARG2
 	CMP.B   #'$',D2			 ;CHECK IF ADDR2 STARTS WITH $
@@ -858,7 +838,6 @@ BM_END
 
 *************************************************************************
 
-*************************************************************************
 BS							  ;FORMAT: BS <$address1> <$address2> "literal string"
 								;SEARCH ADDR1-ADDR2 FOR THE STRING
 	BSR	 PARSE_ADDR1		 ;ARG1
